@@ -11,6 +11,7 @@ class HomeController extends Controller
 {
     public function index(){
 
+        return view('welcome');
         $home_page = true;
         $home_sliders = HomeSlide::where('status',1)->get();
         $games = Game::where('status',1)->get();

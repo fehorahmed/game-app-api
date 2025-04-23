@@ -12,7 +12,7 @@
                 <div class="owl-carousel client_owl-carousel">
                     @foreach ($games as $game)
                         <div class="item">
-                            <a href="{{ route('home.game.detail', $game->name) }}">
+                            <a href="#">
                                 <div class="box">
                                     <div class="img-box">
                                         @if ($game->image)
