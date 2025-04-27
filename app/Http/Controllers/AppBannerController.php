@@ -54,11 +54,11 @@ class AppBannerController extends Controller
 
     public function apiGetAppBanners()
     {
-      $datas = AppBanner::all();
-      return response()->json([
-        'status'=>true,
-        'datas'=>AppBannerResource::collection($datas)
-      ]);
+        $datas = AppBanner::all();
+        return response()->json([
+          'status' => true,
+          'datas' => AppBannerResource::collection($datas)
+        ]);
     }
 
     /**

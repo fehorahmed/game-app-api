@@ -142,6 +142,6 @@ class PaymentMethodController extends Controller
     }
     public function getApiPaymentMethod()
     {
-        return response(PaymentMethodResource::collection(PaymentMethod::where('status',1)->get()));
+        return response(PaymentMethodResource::collection(PaymentMethod::where('status', 1)->get()));
     }
 }

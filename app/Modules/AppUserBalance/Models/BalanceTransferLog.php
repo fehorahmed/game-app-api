@@ -10,10 +10,12 @@ class BalanceTransferLog extends Model
 {
     use HasFactory;
 
-    public function givenUser(){
-        return $this->belongsTo(AppUser::class,'given_by');
+    public function givenUser()
+    {
+        return $this->belongsTo(AppUser::class, 'given_by');
     }
-     public function receivedUser(){
-        return $this->belongsTo(AppUser::class,'received_by');
+    public function receivedUser()
+    {
+        return $this->belongsTo(AppUser::class, 'received_by');
     }
 }

@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AppUserBalanceController extends Controller
 {
-
     /**
      * Display the module welcome screen
      *
@@ -610,7 +609,8 @@ class AppUserBalanceController extends Controller
         }
     }
 
-    public function apiBalanceTransferHistory(){
+    public function apiBalanceTransferHistory()
+    {
 
         $transfers = BalanceTransferLog::where('given_by', auth()->id())->orderBy('id', 'DESC')->get();
         return response(BalanceTransferLogResource::collection($transfers));

@@ -98,8 +98,8 @@ Route::middleware(['auth:appuser'])->group(function () {
     Route::get('/star_history', [AppUserBalanceController::class, 'appUserStarHistory'])->name('user.star.history');
 
 
-     //Support
-     Route::get('/user_support', [AppUserController::class, 'appUserSupport'])->name('user.support');
+    //Support
+    Route::get('/user_support', [AppUserController::class, 'appUserSupport'])->name('user.support');
 });
 
 Route::get('/web_routing_visit_count/{website}', [AppUserController::class, 'appUserWebVisitCount'])->name('user.web_visit_count');

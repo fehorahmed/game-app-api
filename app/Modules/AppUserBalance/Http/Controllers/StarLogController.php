@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Validator;
 
 class StarLogController extends Controller
 {
-
     public function userStarBuy()
     {
         $star = auth()->user()->balance->star;
@@ -107,7 +106,7 @@ class StarLogController extends Controller
                                 $transactionFail = true;
                             }
                         }
-                    }else{
+                    } else {
                         $l_income = new LevelIncomeLog();
                         $l_income->type = 'LOSS';
                         $l_income->level_number = $ck_level;
@@ -265,7 +264,7 @@ class StarLogController extends Controller
                                 $transactionFail = true;
                             }
                         }
-                    }else{
+                    } else {
                         $l_income = new LevelIncomeLog();
                         $l_income->type = 'LOSS';
                         $l_income->level_number = $ck_level;

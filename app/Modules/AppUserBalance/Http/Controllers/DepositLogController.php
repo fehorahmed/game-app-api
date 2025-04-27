@@ -2,7 +2,6 @@
 
 namespace App\Modules\AppUserBalance\Http\Controllers;
 
-
 use App\Http\Controllers\Controller;
 use App\Modules\AppUserBalance\DataTable\DepositLogDataTable;
 use App\Modules\AppUserBalance\Models\AppUserBalance;
@@ -39,7 +38,7 @@ class DepositLogController extends Controller
         }
 
         DB::beginTransaction();
-        $transactionFail =false;
+        $transactionFail = false;
 
         try {
             $data = DepositLog::find($request->id);
@@ -54,13 +53,13 @@ class DepositLogController extends Controller
                         $app_user_balance = new AppUserBalance();
                         $app_user_balance->app_user_id = $data->app_user_id;
                         $app_user_balance->balance = $data->amount;
-                        if(!$app_user_balance->save()){
-                            $transactionFail =true;
+                        if (!$app_user_balance->save()) {
+                            $transactionFail = true;
                         }
                     } else {
                         $app_user_balance->balance += $data->amount;
-                        if(!$app_user_balance->update()){
-                            $transactionFail =true;
+                        if (!$app_user_balance->update()) {
+                            $transactionFail = true;
                         }
                     }
 
@@ -70,23 +69,23 @@ class DepositLogController extends Controller
                     $app_user_b_d->balance_type = 'ADD';
                     $app_user_b_d->balance = $data->amount;
                     $app_user_b_d->deposit_log_id = $data->id;
-                    if(!$app_user_b_d->save()){
-                        $transactionFail =true;
+                    if (!$app_user_b_d->save()) {
+                        $transactionFail = true;
                     }
 
 
-                }else{
-                    $transactionFail =true;
+                } else {
+                    $transactionFail = true;
                 }
 
 
-                if($transactionFail){
+                if ($transactionFail) {
                     DB::rollBack();
                     return response([
                         'status' => false,
                         'message' => 'Something went wrong.'
                     ]);
-                }else{
+                } else {
                     DB::commit();
                     return response([
                         'status' => true,
@@ -105,7 +104,7 @@ class DepositLogController extends Controller
                         'message' => 'Deposit canceled !'
                     ]);
 
-                }else{
+                } else {
                     DB::rollBack();
                     return response([
                         'status' => false,

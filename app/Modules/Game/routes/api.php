@@ -2,9 +2,7 @@
 
 use App\Modules\AppUser\Http\Controllers\AppUserAuthController;
 use App\Modules\Game\Http\Controllers\GameController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('api/game/list', [GameController::class, 'apiGameList'])->name('api.game.list');
 //For Game User

@@ -8,8 +8,6 @@ use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class DepositLogDataTable extends DataTable
@@ -22,30 +20,30 @@ class DepositLogDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('user_info', function($row){
+            ->addColumn('user_info', function ($row) {
                 return "<span>Name: {$row->appUser->name}</span><br><span>ID: {$row->appUser->user_id}</span>";
             })
-            ->addColumn('status', function($row){
-                if($row->status == 1){
+            ->addColumn('status', function ($row) {
+                if ($row->status == 1) {
                     return '<p class="badge bg-info">Pending</p>';
                 }
-                if($row->status == 2){
+                if ($row->status == 2) {
                     return '<p class="badge bg-success">Accepted</p>';
                 }
-                if($row->status == 0){
+                if ($row->status == 0) {
                     return '<p class="badge bg-danger">Cancel</p>';
                 }
 
             })
-            ->addColumn('action', function($row){
-                if($row->status == 1){
+            ->addColumn('action', function ($row) {
+                if ($row->status == 1) {
                     return '<div style="display:inline-flex;"><button data-id="'.$row->id.'" class="btn btn-primary btn-sm btn-accept">Accept</button> &nbsp; <button data-id="'.$row->id.'" class="btn btn-danger btn-sm btn-cancel">Cancel</button></div>';
                 }
-                if($row->status == 2){
+                if ($row->status == 2) {
                     return '';
                     return '<button data-id="'.$row->id.'" class="btn btn-danger btn-sm btn-cancel">Cancel</button></div>';
                 }
-                if($row->status == 0){
+                if ($row->status == 0) {
                     return '';
                     return '<div style="display:inline-flex;"><button data-id="'.$row->id.'" class="btn btn-primary btn-sm btn-accept">Accept</button></div>';
                 }

@@ -17,9 +17,9 @@ class BalanceTransferLogResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "id"=>$this->id,
-            "give_to"=>new AppUserResource(AppUser::find($this->received_by)),
-            "balance"=>$this->balance,
+            "id" => $this->id,
+            "give_to" => new AppUserResource(AppUser::find($this->received_by)),
+            "balance" => $this->balance,
 
         ];
     }

@@ -1,16 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AppBannerController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GlobalConfigController;
-use App\Http\Controllers\HelpVideoController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\HomeSlideController;
-use App\Http\Controllers\PaymentMethodController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\StarConfigController;
-use App\Modules\Website\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 /*

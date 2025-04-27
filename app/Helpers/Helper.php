@@ -29,18 +29,18 @@ class Helper
      *
      * @return array|null
      */
-    public static function get_config($key, $array = FALSE)
+    public static function get_config($key, $array = false)
     {
 
         $config = GlobalConfig::where('key', $key)->first();
         if ($array) {
             $value = [];
-            if ($config !== NULL) {
+            if ($config !== null) {
                 $value = explode(',', trim($config->value));
             }
         } else {
-            $value = NULL;
-            if ($config !== NULL) {
+            $value = null;
+            if ($config !== null) {
                 $value = trim($config->value);
             }
         }
@@ -48,18 +48,18 @@ class Helper
         return $value;
     }
 
-    public static function get_star_config($key, $array = FALSE)
+    public static function get_star_config($key, $array = false)
     {
 
         $config = StarConfig::where('key', $key)->first();
         if ($array) {
             $value = [];
-            if ($config !== NULL) {
+            if ($config !== null) {
                 $value = explode(',', trim($config->value));
             }
         } else {
-            $value = NULL;
-            if ($config !== NULL) {
+            $value = null;
+            if ($config !== null) {
                 $value = trim($config->value);
             }
         }
@@ -242,7 +242,7 @@ class Helper
         // dd(self::$referral_user_ids);
         return self::$referral_user_ids;
     }
-    public static function get_all_referral_user_ids($user_id=null)
+    public static function get_all_referral_user_ids($user_id = null)
     {
         self::$referral_user_ids = [];
 
@@ -267,11 +267,11 @@ class Helper
         } else {
             $avg = $total;
         }
-        $data= [
-            'level'=>$level,
-            'count'=>$count,
-            'avg'=>$avg,
-            'total'=>$total,
+        $data = [
+            'level' => $level,
+            'count' => $count,
+            'avg' => $avg,
+            'total' => $total,
         ];
         return $data;
     }
@@ -291,11 +291,11 @@ class Helper
         } else {
             $avg = $total;
         }
-        $data= [
-            'level'=>$level,
-            'count'=>$count,
-            'avg'=>$avg,
-            'total'=>$total,
+        $data = [
+            'level' => $level,
+            'count' => $count,
+            'avg' => $avg,
+            'total' => $total,
         ];
         return $data;
     }

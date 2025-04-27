@@ -6,7 +6,6 @@ use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Modules\AppUser\Http\Resources\AppUserResource;
 use App\Modules\AppUser\Models\AppUser;
-use App\Modules\AppUser\Models\AppUserGameSession;
 use App\Modules\AppUser\Models\AppUserLoginLog;
 use App\Modules\AppUser\Models\AppUserReferralRequest;
 use App\Modules\AppUser\Models\NormalGameUser;
@@ -322,13 +321,13 @@ class AppUserAuthController extends Controller
         $validation = Validator::make($request->all(), $rules);
 
         if ($validation->fails()) {
-            return redirect()->back()->withInput()->with('error',$validation->errors()->first());
+            return redirect()->back()->withInput()->with('error', $validation->errors()->first());
 
         }
 
         $user = AppUser::where('email', $request->email)->first();
         if (!$user) {
-            return redirect()->back()->withInput()->with('error','User not found.');
+            return redirect()->back()->withInput()->with('error', 'User not found.');
 
         }
 
@@ -343,26 +342,27 @@ class AppUserAuthController extends Controller
         );
 
         $user->sendPasswordResetNotification($token);
-        return redirect()->back()->with('success','Password reset link send to your email. Please check...');
+        return redirect()->back()->with('success', 'Password reset link send to your email. Please check...');
 
     }
 
 
-    public function apiDeleteAccount(Request $request){
+    public function apiDeleteAccount(Request $request)
+    {
 
         $id = auth()->id();
-        $user=  AppUser::find($id);
-        $user->status=0;
-        if($user->update()){
+        $user =  AppUser::find($id);
+        $user->status = 0;
+        if ($user->update()) {
             $request->user()->currentAccessToken()->delete();
             return response()->json([
-                'status'=>true,
-                'message'=>'Account deleted success.'
+                'status' => true,
+                'message' => 'Account deleted success.'
             ]);
-        }else{
+        } else {
             return response()->json([
-                'status'=>false,
-                'message'=>'Something went wrong.'
+                'status' => false,
+                'message' => 'Something went wrong.'
             ]);
         }
     }

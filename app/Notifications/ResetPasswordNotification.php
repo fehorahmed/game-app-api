@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -34,9 +33,9 @@ class ResetPasswordNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->line('We received a request to reset the password associated with your account. If you made this request, please click the link below to reset your password.')
-            ->action('Reset Password',  route('app_user.password-reset', ['token' => $this->token]))
+            ->action('Reset Password', route('app_user.password-reset', ['token' => $this->token]))
             // ->action('Notification Action', route('app_user.password-reset', $this->token, false))
             ->line('Thank you for using our application!');
     }

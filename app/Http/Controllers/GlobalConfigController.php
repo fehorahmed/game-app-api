@@ -58,7 +58,7 @@ class GlobalConfigController extends Controller
     {
         $config = GlobalConfig::where('key', $key)->first();
 
-        if ($config != NULL) {
+        if ($config != null) {
             $config->value = is_array($value) ? implode(',', $value) : $value;
 
             return $config->save();

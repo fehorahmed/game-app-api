@@ -13,14 +13,14 @@ use App\Modules\CoinManagement\Models\UserCoinConvertLog;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class AppUser extends Authenticatable
 {
-
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     protected $table = 'app_users';
     /**
@@ -69,11 +69,11 @@ class AppUser extends Authenticatable
     }
     public function deposit()
     {
-        return $this->hasMany(DepositLog::class, 'app_user_id')->where('status',2);
+        return $this->hasMany(DepositLog::class, 'app_user_id')->where('status', 2);
     }
     public function withdraw()
     {
-        return $this->hasMany(WithdrawLog::class, 'app_user_id')->where('status',2);
+        return $this->hasMany(WithdrawLog::class, 'app_user_id')->where('status', 2);
     }
     public function coinTransferGiven()
     {
@@ -89,10 +89,10 @@ class AppUser extends Authenticatable
     }
     public function refferalUsers()
     {
-        return $this->hasMany(AppUser::class, 'referral_id','user_id');
+        return $this->hasMany(AppUser::class, 'referral_id', 'user_id');
     }
     public function totalStarIncome()
     {
-        return $this->hasMany(LevelIncomeLog::class,'app_user_id')->where('type','GAIN');
+        return $this->hasMany(LevelIncomeLog::class, 'app_user_id')->where('type', 'GAIN');
     }
 }

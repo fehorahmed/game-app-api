@@ -12,7 +12,6 @@ use App\Modules\AppUser\Http\Resources\AppUserResource;
 use App\Modules\AppUser\Http\Resources\DepositHistoryResource;
 use App\Modules\AppUser\Http\Resources\WithdrawHistoryResource;
 use App\Modules\AppUser\Models\AppUser;
-use App\Modules\AppUser\Models\AppUserGameSession;
 use App\Modules\AppUser\Models\AppUserReferralRequest;
 use App\Modules\AppUserBalance\Models\AppUserBalance;
 use App\Modules\AppUserBalance\Models\AppUserBalanceDetail;
@@ -35,10 +34,8 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
 use Intervention\Image\ImageManager;
 
-
 class AppUserController extends Controller
 {
-
     /**
      * Display the module welcome screen
      *

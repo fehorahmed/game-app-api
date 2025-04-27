@@ -90,7 +90,7 @@ class StarConfigController extends Controller
     {
         $config = StarConfig::where('key', $key)->first();
 
-        if ($config != NULL) {
+        if ($config != null) {
             $config->value = is_array($value) ? implode(',', $value) : $value;
 
             return $config->save();

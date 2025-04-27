@@ -23,7 +23,7 @@ class AppUserResource extends JsonResource
             "user_id" => $this->user_id,
             "email_verified_at" => $this->email_verified_at,
             "mobile_verified_at" => $this->mobile_verified_at,
-            "photo" => $this->photo ?  asset('storage/' . $this->photo) : asset('assets/images/users/user-4.jpg'),
+            "photo" => $this->photo ? asset('storage/' . $this->photo) : asset('assets/images/users/user-4.jpg'),
             // "images/profile/1717179327-5.jpg",
             "referral_id" => $this->referral_id,
             "status" => 1,

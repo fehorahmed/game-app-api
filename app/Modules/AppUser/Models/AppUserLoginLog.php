@@ -28,7 +28,7 @@ class AppUserLoginLog extends Model
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://www.geoplugin.net/json.gp?ip=" . $ip);
         curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $ip_data_in = curl_exec($ch); // string
         curl_close($ch);
 
@@ -79,22 +79,22 @@ class AppUserLoginLog extends Model
         if (preg_match('/MSIE/i', $u_agent) && !preg_match('/Opera/i', $u_agent)) {
             $bname = 'IE';
             $ub = "MSIE";
-        } else if (preg_match('/Firefox/i', $u_agent)) {
+        } elseif (preg_match('/Firefox/i', $u_agent)) {
             $bname = 'Mozilla Firefox';
             $ub = "Firefox";
-        } else if (preg_match('/Chrome/i', $u_agent) && (!preg_match('/Opera/i', $u_agent) && !preg_match('/OPR/i', $u_agent))) {
+        } elseif (preg_match('/Chrome/i', $u_agent) && (!preg_match('/Opera/i', $u_agent) && !preg_match('/OPR/i', $u_agent))) {
             $bname = 'Chrome';
             $ub = "Chrome";
-        } else if (preg_match('/Safari/i', $u_agent) && (!preg_match('/Opera/i', $u_agent) && !preg_match('/OPR/i', $u_agent))) {
+        } elseif (preg_match('/Safari/i', $u_agent) && (!preg_match('/Opera/i', $u_agent) && !preg_match('/OPR/i', $u_agent))) {
             $bname = 'Safari';
             $ub = "Safari";
-        } else if (preg_match('/Opera/i', $u_agent) || preg_match('/OPR/i', $u_agent)) {
+        } elseif (preg_match('/Opera/i', $u_agent) || preg_match('/OPR/i', $u_agent)) {
             $bname = 'Opera';
             $ub = "Opera";
-        } else if (preg_match('/Netscape/i', $u_agent)) {
+        } elseif (preg_match('/Netscape/i', $u_agent)) {
             $bname = 'Netscape';
             $ub = "Netscape";
-        } else if ((isset($u_agent) && (strpos($u_agent, 'Trident') !== false || strpos($u_agent, 'MSIE') !== false))) {
+        } elseif ((isset($u_agent) && (strpos($u_agent, 'Trident') !== false || strpos($u_agent, 'MSIE') !== false))) {
             $bname = 'Internet Explorer';
             $ub = 'Internet Explorer';
         }
