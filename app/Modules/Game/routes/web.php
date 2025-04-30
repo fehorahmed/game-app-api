@@ -4,7 +4,7 @@ use App\Modules\Game\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('game', 'GameController@welcome');
-Route::middleware('auth', 'verified')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('admin')->group(function () {
 
         Route::prefix('game')->group(function () {
